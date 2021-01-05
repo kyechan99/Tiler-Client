@@ -9,6 +9,7 @@ public class Worker : Unit
         _name = "일꾼";
         _desc = "일해라 노예야";
         _cost = 0;
+        _activity.Add(ACTIVITY.MOVE);
         _activity.Add(ACTIVITY.BUILD_MINE);
         _activity.Add(ACTIVITY.BUILD_FARM);
         _activity.Add(ACTIVITY.BUILD_ATTACK_BUILDING);
@@ -20,6 +21,13 @@ public class Worker : Unit
     void Update()
     {
         GameMng.I.UnitClickMove(this.gameObject, this);
+    }
+
+    public static void Move()
+    {
+        RangeScrp RangSc = GameObject.Find("RangeParent").GetComponent<RangeScrp>();
+        RangSc.MoveRange();
+        Debug.Log("캐릭터 이동");
     }
 
     public static void buildMine()

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Farm : Built
 {
     public int making;  // 식량 생산량
-    public static int cost = 4;   // 건설 비용
 
     // Start is called before the first frame update
     void Start()

@@ -10,6 +10,10 @@ public class Built : Object
      */
     public int _hp = 0;
 
+    public int cost = 4;   // 건설 비용
+
+    public static int _cost = 10;
+
     public RaycastHit2D hit;
 
     /**
@@ -21,7 +25,6 @@ public class Built : Object
         hit = GameMng.I.MouseLaycast();
         if (GameMng.I.GetTileCs._builtObj == null)
         {
-           
             {
                 Instantiate(built, GameMng.I.GetTileCs.transform);
                 GameMng.I.GetTileCs._builtObj = this;

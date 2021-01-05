@@ -37,6 +37,12 @@ public class GameMng : MonoBehaviour
     
     public Tile[,] mapTile = new Tile[mapHeight, mapWidth];     // 타일의 2차원 배열 값
 
+
+    [SerializeField]
+    private Built farm;
+
+
+
     // ---- 맵의 가로 세로 크기 읽기
     public int GetMapWidth
     {
@@ -160,6 +166,7 @@ public class GameMng : MonoBehaviour
         // 유닛이 없다면 정적인 타일이란 뜻
         if (tile._unitObj == null)
         {
+            NetworkMng.getInstance._soundGM.tileClick();
             objectNameTxt.text = tile._name;
             objectDescTxt.text = tile._desc;
             return;
@@ -167,6 +174,9 @@ public class GameMng : MonoBehaviour
         objectNameTxt.text = tile._unitObj._name;
         objectDescTxt.text = tile._unitObj._desc;
         hpText.text = tile._unitObj._hp + "";
+
+        NetworkMng.getInstance._soundGM.unitClick(UNIT.WORKER);
+
         //damageText.text = tile._unitObj._damage + "";
 
         // 행동을 가진 오브젝트는 actList 를 뿌려줘야 함
@@ -186,6 +196,9 @@ public class GameMng : MonoBehaviour
                 Debug.LogError("childTxt 의 인덱스 값이 옳지 않음");
             }
         }
+
+         
+        Debug.Log(farm.cost);
     }
 
     /**
@@ -198,6 +211,11 @@ public class GameMng : MonoBehaviour
     {
         switch (activity)
         {
+            case ACTIVITY.MOVE:
+                actName.text = "이동";
+                actDesc.text = "한 턴 소요";
+                //actButton.onClick.AddListener(delegate { Worker.buildMine(); });
+                break;
             case ACTIVITY.BUILD_MINE:
                 actName.text = "광산";
                 actDesc.text = "한 턴 소요";

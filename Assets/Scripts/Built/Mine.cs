@@ -14,6 +14,10 @@ public class Mine : Built
         _desc = "°ñµå¸¦ Ä¶ ¼ö ÀÖ´Ù";
         _hp = 10;
         making = 5;
+
+        GameMng.I.AddDelegate(MakingGold);
+        GameMng.I.RemoveDelegate(MakingGold);
+
     }
 
     // Update is called once per frame

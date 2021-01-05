@@ -68,6 +68,21 @@ public class SoundMng : MonoBehaviour
         _effect.Play();
     }
 
+    public void tileClick()
+    {
+        _effect.clip = effectClip[1];
+        _effect.volume = effectVolume;
+        _effect.Play();
+    }
+
+    public void unitClick(UNIT unitCode)
+    {
+        _effect.clip = effectClip[2];
+        _effect.volume = effectVolume;
+        _effect.Play();
+    }
+
+
     IEnumerator changeTo(AudioClip clip)
     {
         while (_audio.volume > 0)
